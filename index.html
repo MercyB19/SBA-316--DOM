@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header class="header">
+        <h1 style="color: blueviolet;">My To-Do List</h1>
+    </header>
+    <main class="main">
+        <form id="toDoList" class="form">
+            <select id="taskcategory">
+                <option value="" disabled selected>Select Category</option>
+                <option value="Work">Work</option>
+                <option value="Home">Home</option>
+                <option value="Personal">Personal</option>
+                <option value="School">School</option>
+                <option value="Volunteering">Volunteering</option>
+            </select>
+            <!-- Placeholder for selected category name-->
+            <div id="categoryHeader" style="text-align: center; margin-top: 20px;"></div>
+            <!--Placeholder for input boxes-->
+            <div id="taskInputs" style="text-align: center; margin-top: 20px;"</div>
+            <p>
+                <button type="button"onclick="toDoList()">Add New Task</button>
+            </p>
+        </form>
     
 </body>
 </html>
