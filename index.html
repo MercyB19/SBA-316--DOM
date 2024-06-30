@@ -12,7 +12,7 @@
     </header>
     <main class="main">
         <form id="toDoList" class="form">
-            <select id="listCategories">
+            <select id="listCategories" required>
                 <option value="" disabled selected>Select Category</option>
                 <option value="Work">Work</option>
                 <option value="Home">Home</option>
@@ -25,10 +25,10 @@
             <!--Placeholder for input boxes-->
             <div id="listInputs" style="text-align: center; margin-top: 20px;"></div>
             <p>
-                <button type="button"onclick="toDoList()">Add New Item</button>
+                <button type="button" id="addTaskButton" onclick="toDoList()">Add New Item</button>
             </p>
         </form>
-        </main>
+    </main>
     <script>
         // Add an event listener to the dropdown menu  
         document.getElementById('listCategories').addEventListener('change', function() {
@@ -36,7 +36,7 @@
             let selectedCategory = this.options[this.selectedIndex].text;
 
             // Put the selected category name in the categoryHeader area
-            let categoryHeader = document.getElementById('categoryHeader'); categoryHeader.innerHTML = '<h2>$(selectedCategory}</h2>';
+            let categoryHeader = document.getElementById('categoryHeader'); categoryHeader.innerHTML = `<h2>${selectedCategory}</h2>`;
 
             // Create5 empty boxes and put them in the listInputs area
             let listInputs = document.getElementById('listInputs'); listInputs.innerHTML = ''; // Clear any existing input boxes
@@ -46,7 +46,7 @@
                 inputBox.placeholder = 'Enter new task';
                 inputBox.style.display = 'block';
                 inputBox.sytle.margin = '10px 0';
-                listInputs.appendChild(inputBox);
+                document.getElementById('listInputs').appendChild(inputBox);
             }
         });
     </script>
