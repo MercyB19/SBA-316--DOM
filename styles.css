@@ -1,0 +1,25 @@
+/* Add your CSS styles here */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    text-align: center;
+}
+
+.main {
+    margin: 20px;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+#categoryHeader {
+    text-align: center;
+}
+
+#listInputs input {
+    display: block;
+    margin: 10px 0;
+}
