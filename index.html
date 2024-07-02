@@ -29,7 +29,7 @@
             </p>
         </form>
         <!--Task list-->
-        <ul id="toDoList"></ul>
+        <ul id="taskList"></ul>
     </main>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -65,36 +65,41 @@
         // Function to add new input box
         function addNewInput() {
             // Get the selected category
-            const taskCategoryElement = document.getElementById('listCategories');
-            let taskCategory = taskCategoryElement.options[taskCategoryElement.selectedIndex].value;
+            const listCategoriesElement = document.getElementById('listCategories');
+            let listCategory = listCategoriesElement.options[listCategoriesElement.selectedIndex].value;
+            // Get the listInputs div
+            const listInputs = document.getElementById('listInputs');
 
             // Make sure category is selected
-            if (!taskCategory) {
+            if (!listCategory) {
                 alert('Please select a category');
                 return;
             }   
-        }
-        // Get the listInputs div
-        const listInputs = document.getElementById('listInputs');
+    
+            // Get the listInputs div
 
-        // Count the number of existing input boxes
-        const inputCount = listInputs.querySelectorAll('input').length;
+            // Get the listInputs div
+            const listInputs = document.getElementById('listInputs');
 
-        // Create a new input box
-        const newInput = document.createElement('input');
-        newInput.type = 'text';
-        newInput.placeholder = 'Enter new task';
-        newInput.id = `${taskCategory.toLowerCase()}TaskInputs${inputCount}`;
-        newInput.name = `${taskCategory.toLowerCase()}TaskInputs${inputCount}`;
-        newInput.style.display = 'block';
-        newInput.style.margin = '10px 0';
+            // Count the number of existing input boxes
+            const inputCount = listInputs.querySelectorAll('input').length;
+
+            // Create a new input box
+            const newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.placeholder = 'Enter new task';
+            newInput.id = `${listCategory.toLowerCase()}TaskInputs${inputCount}`;
+            newInput.name = `${listCategory.toLowerCase()}TaskInputs${inputCount}`;
+            newInput.style.display = 'block';
+            newInput.style.margin = '10px 0';
         
-        // Append new input box to listInputs div
-        listInputs.appendChild(newInput);
+            // Append new input box to listInputs div
+            listInputs.appendChild(newInput);
+        }
         
         // Function to add new task
         function toDoList() {
-            const taskCategory = document.getElementById('listCategories').value;
+            const listCategory = document.getElementById('listCategories').value;
             const taskInputs = document.querySelectorAll('#listInputs input');
 
            taskInputs.forEach(input => {
@@ -102,13 +107,12 @@
                 if (task!== '') {
                 // Create a new list item for the task
                     const taskItem = document.createElement('li');
-                    taskItem.textContent = `${taskCategory}: ${task}`;
+                    taskItem.textContent = `${listCategory}: ${task}`;
                     document.getElementById('taskList').appendChild(taskItem);
                     input.value = '';
                 }
             });
         }
-
     </script>
-</body>
+/body>
 </html>
