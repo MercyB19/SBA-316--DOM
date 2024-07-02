@@ -52,8 +52,8 @@
                     let inputBox = document.createElement('input');
                     inputBox.type = 'text';
                     inputBox.placeholder = 'Enter new task';
-                    inputBox.id = 'taskInput${i}';
-                    inputBox.name = 'taskInput${i}';
+                    inputBox.id = `${selectedCategory.toLowerCase()}TaskInputs${i}`;
+                    inputBox.name = `${selectedCategory.toLowerCase()}TaskInputs${i}`;
                     inputBox.style.display = 'block';
                     inputBox.style.margin = '10px 0';
                     console.log('Appending input box:', inputBox);
