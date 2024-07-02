@@ -25,7 +25,7 @@
             <!--Placeholder for input boxes-->
             <div id="listInputs" style="margin-top: 20px;"></div>
             <p>
-                <button type="button" id="addTaskButton" onclick="toDoList()">Add New Item</button>
+                <button type="button" id="addTaskButton" onclick="addNewInput()">Add New Item</button>
             </p>
         </form>
         <!--Task list-->
@@ -33,18 +33,18 @@
     </main>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-        // Add an event listener to the dropdown menu  
+            // Add an event listener to the dropdown menu  
             document.getElementById('listCategories').addEventListener('change', function() {
-            // Get the name of the chosen category
+                // Get the name of the chosen category
                 let selectedCategory = this.options[this.selectedIndex].text;
                 console.log('Category selected:', selectedCategory);
 
-            // Put the selected category name in the categoryHeader area
+                // Put the selected category name in the categoryHeader area
                 let categoryHeader = document.getElementById('categoryHeader');
                 console.log('Category header element:', categoryHeader);
                 categoryHeader.innerHTML = `<h2>${selectedCategory}</h2>`;
 
-            // Create5 empty boxes and put them in the listInputs area
+                // Create5 empty boxes and put them in the listInputs area
                 let listInputs = document.getElementById('listInputs'); 
                 console.log('List inputs element:', listInputs);
                 listInputs.innerHTML='';
@@ -59,20 +59,50 @@
                     console.log('Appending input box:', inputBox);
                     listInputs.appendChild(inputBox);
                 }
-            console.log('All input boxes appended');
+                console.log('All input boxes appended');
             });
         });
-        // Fucntion to add new task
+        // Function to add new input box
+        function addNewInput() {
+            // Get the selected category
+            const taskCategoryElement = document.getElementById('listCategories');
+            const taskCategory = taskCategoryElement.options[taskCategoryElement.selectedIndex].text;
+
+            // Make sure category is selected
+            if (taskCategory === '') {
+                alert('Please select a category');
+                return;
+            }   
+        }
+        // Get the listInputs div
+        const listInputs = document.getElementById('listInputs');
+
+        // Count the number of existing input boxes
+        const inputCount = listInputs.querySelectorAll('input').lenth;
+
+        // Create a new input box
+        const newInput = document.createElement('input');
+        newInput.type = 'text';
+        newInput.placeholder = 'Enter new task';
+        newInput.id = `${taskCategory.toLowerCase()}TaskInputs${inputCount}`;
+        newInput.name = `${taskCategory.toLowerCase()}TaskInputs${inputCount}`;
+        newInput.style.display = 'block';
+        newInput.style.margin = '10px 0';
+        
+        // Append new input box to listInputs div
+        listInputs.appendChild(inputBox);
+        
+        // Function to add new task
         function toDoList() {
             const taskCategory = document.getElementById('listCategories').value;
             const taskInputs = document.querySelectorAll('#listInputs input');
 
-            taskInputs.forEach(input => {
+           taskInputs.forEach(input => {
                 const task = input.value.trim();
-                if (task !== '') {
-                    // Create a new list item for the task
+                if (task!== '') {
+                // Create a new list item for the task
                     const taskItem = document.createElement('li');
-                    taskItem.textContent = $`{taskCategory}: ${task}`;
+                    taskItem.textContent = `${taskCategory}: ${task}`;
                     document.getElementById('taskList').appendChild(taskItem);
                     input.value = '';
                 }
