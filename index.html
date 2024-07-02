@@ -21,9 +21,9 @@
                 <option value="Volunteering">Volunteering</option>
             </select>
             <!-- Placeholder for selected category name-->
-            <div id="categoryHeader" style="text-align: center; margin-top: 20px;"></div>
+            <div id="categoryHeader" style="margin-top: 20px;"></div>
             <!--Placeholder for input boxes-->
-            <div id="listInputs" style="text-align: center; margin-top: 20px;"></div>
+            <div id="listInputs" style="margin-top: 20px;"></div>
             <p>
                 <button type="button" id="addTaskButton" onclick="toDoList()">Add New Item</button>
             </p>
@@ -39,15 +39,17 @@
             let categoryHeader = document.getElementById('categoryHeader'); categoryHeader.innerHTML = `<h2>${selectedCategory}</h2>`;
 
             // Create5 empty boxes and put them in the listInputs area
-            let listInputs = document.getElementById('listInputs'); listInputs.innerHTML = ''; // Clear any existing input boxes
+            let listInputs = document.getElementById('listInputs'); listInputs.innerHTML = ''; 
             for (let i = 0; i < 5; i++) {
                 let inputBox = document.createElement('input');
                 inputBox.type = 'text';
                 inputBox.placeholder = 'Enter new task';
                 inputBox.style.display = 'block';
                 inputBox.sytle.margin = '10px 0';
-                document.getElementById('listInputs').appendChild(inputBox);
+                listInputs.appendChild(inputBox);
             }
+            console.log('All input boxes appended');
+
         });
     </script>
 </body>
