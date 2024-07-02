@@ -29,7 +29,7 @@
             </p>
         </form>
         <!--Task list-->
-        <ul id="toDoList"</ul>
+        <ul id="toDoList"></ul>
     </main>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -66,10 +66,10 @@
         function addNewInput() {
             // Get the selected category
             const taskCategoryElement = document.getElementById('listCategories');
-            const taskCategory = taskCategoryElement.options[taskCategoryElement.selectedIndex].text;
+            let taskCategory = taskCategoryElement.options[taskCategoryElement.selectedIndex].value;
 
             // Make sure category is selected
-            if (taskCategory === '') {
+            if (!taskCategory) {
                 alert('Please select a category');
                 return;
             }   
@@ -78,7 +78,7 @@
         const listInputs = document.getElementById('listInputs');
 
         // Count the number of existing input boxes
-        const inputCount = listInputs.querySelectorAll('input').lenth;
+        const inputCount = listInputs.querySelectorAll('input').length;
 
         // Create a new input box
         const newInput = document.createElement('input');
@@ -90,7 +90,7 @@
         newInput.style.margin = '10px 0';
         
         // Append new input box to listInputs div
-        listInputs.appendChild(inputBox);
+        listInputs.appendChild(newInput);
         
         // Function to add new task
         function toDoList() {
