@@ -28,6 +28,8 @@
                 <button type="button" id="addTaskButton" onclick="toDoList()">Add New Item</button>
             </p>
         </form>
+        <!--Task list-->
+        <ul id="toDoList"</ul>
     </main>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -50,6 +52,8 @@
                     let inputBox = document.createElement('input');
                     inputBox.type = 'text';
                     inputBox.placeholder = 'Enter new task';
+                    inputBox.id = 'taskInput${i}';
+                    inputBox.name = 'taskInput${i}';
                     inputBox.style.display = 'block';
                     inputBox.style.margin = '10px 0';
                     console.log('Appending input box:', inputBox);
@@ -58,6 +62,23 @@
             console.log('All input boxes appended');
             });
         });
+        // Fucntion to add new task
+        function toDoList() {
+            const taskCategory = document.getElementById('listCategories').value;
+            const taskInputs = document.querySelectorAll('#listInputs input');
+
+            taskInputs.forEach(input => {
+                const task = input.value.trim();
+                if (task !== '') {
+                    // Create a new list item for the task
+                    const taskItem = document.createElement('li');
+                    taskItem.textContent = $`{taskCategory}: ${task}`;
+                    document.getElementById('taskList').appendChild(taskItem);
+                    input.value = '';
+                }
+            });
+        }
+
     </script>
 </body>
 </html>
