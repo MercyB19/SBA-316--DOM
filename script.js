@@ -62,19 +62,36 @@ function addNewInput() {
   listInputs.appendChild(newInput);
 }
 
-// Function to add new task
+// Function to add a new task
 function toDoList() {
-  const listCategory = document.getElementById("listCategories").value;
-  const taskInputs = document.querySelectorAll("#listInputs input");
+  const listCategory = document.getElementById('listCategories').value;
+  const taskInputs = document.querySelectorAll('#listInputs input');
 
-  taskInputs.forEach((input) => {
-    const task = input.value.trim();
-    if (task !== "") {
-      // Create a new list item for the task
-      const taskItem = document.createElement("li");
-      taskItem.textContent = `${listCategory}: ${task}`;
-      document.getElementById("taskList").appendChild(taskItem);
-      input.value = "";
-    }
+  let valid = true;
+
+  taskInputs.forEach(input => {
+      const task = input.value.trim();
+      if (task === '') {
+          valid = false;
+          input.style.border = '1px solid red'; // Highlight empty fields
+      } else {
+          input.style.border = ''; // Reset the border for non-empty fields
+      }
+  });
+
+  if (!valid) {
+      alert('Please fill out all task fields.');
+      return;
+  }
+
+  taskInputs.forEach(input => {
+      const task = input.value.trim();
+      if (task !== '') {
+          // Create a new list item for the task
+          const taskItem = document.createElement('li');
+          taskItem.textContent = `${listCategory}: ${task}`;
+          document.getElementById('taskList').appendChild(taskItem);
+          input.value = ''; // Clear the input field
+      }
   });
 }
