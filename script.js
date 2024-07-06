@@ -10,24 +10,29 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('Category header element:', categoryHeader);
       categoryHeader.innerHTML = `<h2>${selectedCategory}</h2>`;
 
-      // Create 5 empty boxes and put them in the listInputs area
+      // Create and append input fields
       let listInputs = document.getElementById('listInputs');
       console.log('List inputs element:', listInputs);
-      listInputs.innerHTML = '';
-      for (let i = 0; i < 5; i++) {
-          let inputBox = document.createElement('input');
-          inputBox.type = 'text';
-          inputBox.placeholder = 'Enter new task';
-          inputBox.id = `${selectedCategory.toLowerCase()}TaskInput${i}`;
-          inputBox.name = `${selectedCategory.toLowerCase()}TaskInput${i}`;
-          inputBox.style.display = 'block';
-          inputBox.style.margin = '10px 0';
-          console.log('Appending input box:', inputBox);
-          listInputs.appendChild(inputBox);
-      }
-      console.log('All input boxes appended');
+      listInputs.innerHTML = ''; // Clear previous input fields
+      createInputFields(selectedCategory);
   });
 });
+
+// Function to create and append input fields using DocumentFragment
+function createInputFields(category) {
+  const fragment = document.createDocumentFragment();
+  for (let i = 0; i < 5; i++) {
+      const inputBox = document.createElement('input');
+      inputBox.type = 'text';
+      inputBox.placeholder = 'Enter new task';
+      inputBox.id = `${category.toLowerCase()}TaskInput${i}`;
+      inputBox.name = `${category.toLowerCase()}TaskInput${i}`;
+      inputBox.style.display = 'block';
+      inputBox.style.margin = '10px 0';
+      fragment.appendChild(inputBox);
+  }
+  document.getElementById('listInputs').appendChild(fragment);
+}
 
 // Function to add a new input box
 function addNewInput() {
