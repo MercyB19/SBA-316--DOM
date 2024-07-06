@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <header class="header">
-        <h1 style="color: blueviolet; text-align: center; margin-top: 20px;">My To-Do List</h1>
+        <h1 style="color: blueviolet";>My To-Do List</h1>
     </header>
     <main class="main">
         <form id="toDoList" class="form">
@@ -22,21 +20,18 @@
                 <option value="School">School</option>
                 <option value="Volunteering">Volunteering</option>
             </select>
-            <!-- Placeholder for selected category name-->
-            <div id="categoryHeader" style="margin-top: 20px;"></div>
-            <!--Placeholder for input boxes-->
-            <div id="listInputs" style="margin-top: 20px;"></div>
-            <p>
+            <!-- Placeholder for selected category name -->
+            <div id="categoryHeader" class="center" style="margin-top: 20px;"></div>
+            <!-- Placeholder for input boxes -->
+            <div id="listInputs" class="input-container" style="margin-top: 20px;"></div>
+            <div class="button-container">
                 <button type="button" id="addTaskButton" onclick="addNewInput()">Add New Item</button>
-            </p>
-            <p>
-                <button type="button" id="submitTaskButton" onclick="toDoList()">Submit</button>
-            </p>
+                <button type="button" id="submitTasksButton" onclick="toDoList()">Submit Tasks</button>
+            </div>
         </form>
-        <!--Task list-->
+        <!-- Task list -->
         <ul id="taskList"></ul>
     </main>
-    <!--Use the Script.js file for your JavaScript code going forward. When combined, there were several issues that were present but after cutting the JS out and linking it as an external file all is working.-->
-    <script src="script.js"></script> <!--External JS file link-->
+    <script src="script.js"></script>
 </body>
 </html>
